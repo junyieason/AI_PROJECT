@@ -1,0 +1,37 @@
+# Multiplayer A* Search Algorithm 
+
+# Table of Contents
+- [Multiplayer A* Search Algorithm](#multiplayer-A*-Search-Algorithm)
+  * [Motivation](#motivation)
+  * [Application](#application)
+  * [Trade-offs](#trade-offs)     
+     - [Advantages](#advantages)
+     - [Disadvantages](#disadvantages)
+  * [Future improvements](#future-improvements)
+
+## Multiplayer A* Search Algorithm 
+The Multiplayer Agent can be executed from the file multiplayer.py in the agents folder.
+### Motivation  
+The basic idea of Multiplayer is that the agent is able to adjust its actions based on the actions that conducted by the opponents which can be concluded as dynamic decision-making. Before implementing the multiplayer on the A* Search algorithm, the A* Search algorithm itself is not quite efficient to play against opponent, and the wining rate is seriously low. We consider that this problem may due to the limitation of the A* Search algorithm. Therefore, we conclude that with the combination of A* Search algorithm with Multiplayer, the efficiency and wining rate will be increased as our agents combines the power of the A* search algorithm with dynamic decision-making based on the positions and actions of opponents. These are some of the main explanations for why this agent inspires. Firstly, the strategy used in this agent is adaptive, which means that the agent is always able to adapt its strategy on offending and defending based on the positions and actions of opponents instead of following a fixed strategy. At the same time, this adaptive strategy will also make it difficult for the opponent to predict the actions of our agent. Secondly, it will provide efficient cooperation because the position and movements of each opponents are taken into consideration. In order to increase our chances of winning, it can effectively provide the key to victory, which is to deliberately avoid and engage the opponent. Thirdly, this technique also has the ability of A* search algorithm which is being able to find the optimal path by calculating the distance of each available paths to a target while avoiding obstacles and opponents.
+
+[Back to top](#table-of-contents)
+
+### Application  
+The game combines A* search with opponent position prediction. First, in the `predictOpponentPositions` function, the opponent's last move is used to predict their next position and is stored in the `predictedOpponentPositions` list. The changed list will be used in the later agent's prediction of the opponent's position. Then, in the `chooseAction()` function, these predicted positions will be called, which will ultimately determine a target position, which may be the nearest opponent, food, capsule, or other strategic target. The selection of this target will depend on the game. state. Next, the best path to the target location will be searched by A* search, but during the search, the position of the adversary will be taken into account, since the adversary will bring the risk of the agent being captured. Finally, in the path planning phase, each action on the path will be checked, these actions need to be confirmed to be legal, and the first action will be returned as the next action. This integrated approach allows agents to choose actions more intelligently, checking various conditions to complete navigation while adjusting actions based on the dynamic position of the opponent.
+
+[Back to top](#table-of-contents)
+
+### Trade-offs  
+#### *Advantages*  
+As mentioned in Motivation part, Multiplayer will provide a dynamic decision-making functionality and it also become one of the major advantage of combining the A* Search algorithm with Multiplayer dynamic, which makes the strategy becoming adaptive. Agents can adapt their behavior to sudden shifts in adversary actions. This adaptability often also brings unpredictability. Because the agent adjusts its own actions based on the actions of the opponents, which means that even if the opponent has good decision-making ability and a good strategy, it will be captured and analyzed by the agent for cracking. Furthermore, as mentioned, this combined technique not only has the ability of Multiplayer, but also has the ability of A* Search algorithm and this will bring another major advantage of this technique. The incorporation of the A* search algorithm enables the agent to become more efficient in finding the best path while also having the ability to avoid walls and opponents. For example, when an agent navigates a complex game environment with multiple opponents and wall obstacles, it can consistently choose the most efficient route to obtain food, while at the same time it has the ability to predict the opponent's actions and adjust its own actions. Ability, which is crucial to victory.
+
+#### *Disadvantages*
+One disadvantage is that this combination will bring more complexity and increased computational requirements. Combining A* search with multi-player dynamic decision-making requires more computing power, making this algorithm less efficient than expected given limited computing power. The time-consuming nature of A*star leads to delayed decision-making in certain scenarios, and therefore delayed decision-making becomes a threat to winning in the game, especially in scenarios that require quick decision-making.
+Another disadvantage is that the combination of A search algorithms with multi-player dynamics can lead to conflicts between action adjustment and optimal path selection. As mentioned, the underlying logic of the A* search algorithm is to find the shortest path for the agent to reach the target location, which means that the priority of selecting the path with the shortest distance will be higher than considering the opponent's position or actions. However, in an actual Pacman game, the position and action of opponents are constantly changing, and the agent may be blocked and captured by the opponent. Therefore, the logic of Multiplayer will be used to enable the agent to adjust its actions at all times to respond to the threat from opponents. This includes avoiding opponents, choosing to go around walls, or adjusting their path. However, these actions may conflict with the shortest path chosen by the A* search algorithm. In the game, certain shortest paths will have to be abandoned to avoid being captured by the opponent, which may extend the time to reach the food and the competitiveness of agent is weakened.
+
+[Back to top](#table-of-contents)
+
+### Future improvements  
+At first, what mainly needs to be improved and optimized is the conflict problem of action selection to improve decision-making efficiency and overcome decision-making complexity and delayed decision-making problems. We believe that this improvement can be accomplished by finding and switching to more efficient pathfinding algorithms, variants of A* search algorithm, or techniques such as parallel computing. Moreover, strategy adjustment also needs to be further balanced, which means that the relationship between the shortest path selection of the A* search algorithm and the dynamic decision-making effect brought by multiplayer games needs to be further balanced. This idea can be achieved through advanced decision tree development and the use of deep reinforcement learning models to allow the agent to better predict the actions of its opponent and adjust its path accordingly, without conflicting with the ideal path selection.
+
+[Back to top](#table-of-contents)
